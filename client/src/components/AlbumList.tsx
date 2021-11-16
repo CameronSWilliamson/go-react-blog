@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Loader from "./Loader";
 
 interface Data {
     ID: number;
