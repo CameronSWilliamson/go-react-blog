@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import AlbumList from "./components/AlbumList";
 import Header from "./components/Header";

@@ -1,6 +1,5 @@
 import * as React from "react";
-import { Container, Spinner, Col, Row } from "react-bootstrap";
-import { isPropertySignature } from "typescript";
+import { Container, Spinner } from "react-bootstrap";
 
 interface Props {
     loading: boolean;

@@ -141,3 +141,4 @@ dist
 .yarn/install-state.gz
 .pnp.*
 client/yarn.lock
+client/build

@@ -1,0 +1,79 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on: [push, pull_request, workflow_dispatch]
+  # Triggers the workflow on push or pull request events but only for the master branch
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  buildReact:
+    # The type of runner that the job will run on
+    runs-on: self-hosted
+    defaults:
+      run:
+        working-directory: ./client
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Setting up NodeJS
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16"
+
+      - name: Install Dependencies
+        run: |
+          npm install -g yarn
+          yarn install
+
+      - name: Build
+        run: yarn build
+
+      - name: Test
+        run: yarn test --watchAll=false
+
+      - name: Archive Release
+        shell: bash
+        run: |
+          tar -czvf react-build.tar.gz ./build
+
+      - name: Save tarball
+        uses: actions/upload-artifact@v2
+        with:
+          name: {{}}
+          path: client/react-build.tar.gz
+
+  buildGo:
+    runs-on: self-hosted
+    defaults:
+      run:
+        working-directory: ./server
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-go@v2
+        with:
+          go-version: 1.17
+
+      - name: Build
+        run: go build -v ./...
+
+      - name: Test
+        run: go test -v ./...
+
+      - shell: bash
+        run: tar -czvf go-build.tar.gz .
+
+      - name: Save Tarball
+        uses: actions/upload-artifact@v2
+        with:
+          name: release

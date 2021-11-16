@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Loader from "./Loader";
 
 interface Data {
     ID: number;
@@ -7,7 +6,6 @@ interface Data {
 }
 
 const AlbumList = () => {
-    const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState<string>();
     const [ID, setID] = useState<number>();
 
@@ -29,7 +27,7 @@ const AlbumList = () => {
         });
     };
 
-    useEffect(() => fetchApi(), []);
+    useEffect(() => fetchApi());
 
     return (
         <div>
