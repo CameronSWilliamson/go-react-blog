@@ -66,11 +66,8 @@ jobs:
       - name: Test
         run: go test -v ./...
 
-      - shell: bash
-        run: tar -czvf go-build.tar.gz .
-
-      - name: Save Tarball
+      - name: Save Executable
         uses: actions/upload-artifact@v2
         with:
-          name: release
-          path: server/go-build.tar.gz
+          name: go-server
+          path: server/go-react-blog
