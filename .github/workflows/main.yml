@@ -44,7 +44,7 @@ jobs:
       - name: Save tarball
         uses: actions/upload-artifact@v2
         with:
-          name: {{}}
+          name: react-build.tar.gz
           path: client/react-build.tar.gz
 
   buildGo:
@@ -73,3 +73,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: release
+          path: server/go-build.tar.gz
