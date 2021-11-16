@@ -11,10 +11,12 @@ import (
 func main() {
 	log.Println("Starting the HTTP server on port 8080")
 	router := mux.NewRouter().StrictSlash(true)
-	initializeHandlers(router)
+	subRouter := router.PathPrefix("/api/").Subrouter()
+	initializeHandlers(subRouter)
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
 
 func initializeHandlers(router *mux.Router) {
-	router.HandleFunc("/api/test", controllers.DefaultEndpoint).Methods("GET")
+	router.HandleFunc("/test", controllers.DefaultEndpoint).Methods("GET")
+	router.HandleFunc("/users/{user}", controllers.UserTest).Methods("GET")
 }
