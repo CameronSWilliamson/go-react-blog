@@ -1,5 +1,4 @@
 import React from "react";
-import { Button, Card } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import Content from "../components/Content";
 import PostCard from "../components/PostCard";
