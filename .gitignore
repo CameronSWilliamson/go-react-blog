@@ -14,6 +14,7 @@
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
+server/go-react-blog
 
 # Dependency directories (remove the comment below to include it)
 # vendor/
@@ -139,3 +140,5 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+client/yarn.lock
+client/build
