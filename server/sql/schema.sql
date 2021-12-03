@@ -1,14 +1,3 @@
-/**********************************************************************
- * NAME: Cameron S. Williamson
- * CLASS: CPSC 321 01
- * DATE: 10.18.2021
- * HOMEWORK: 6
- * DESCRIPTION: The DDL that creates and fills the tables required for my 
-                final project.
- **********************************************************************/
-
-
--- TODO: add drop table statements
 DROP TABLE IF EXISTS Post_Categories;
 DROP TABLE IF EXISTS Post_Comments;
 DROP TABLE IF EXISTS Users_Comments;
@@ -19,7 +8,6 @@ DROP TABLE IF EXISTS Posts;
 DROP TABLE IF EXISTS Comments;
 DROP TABLE IF EXISTS Categories;
 
--- TODO: add create table statements
 
 CREATE TABLE Users
 (
@@ -99,7 +87,6 @@ CREATE TABLE Users_Likes
     FOREIGN KEY (post_id) REFERENCES Posts(post_id)
 );
 
--- TODO: add insert statements
 
 INSERT INTO Users
     (username, email, country)
@@ -235,7 +222,6 @@ VALUES
     ('zxc', 2),
     ('qwe', 1);
 
--- TODO: add select statements (to print tables)
 
 SELECT *
 FROM Users;
