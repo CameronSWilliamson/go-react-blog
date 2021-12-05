@@ -3,6 +3,7 @@ DROP TABLE IF EXISTS Post_Comments;
 DROP TABLE IF EXISTS Users_Comments;
 DROP TABLE IF EXISTS Users_Posts;
 DROP TABLE IF EXISTS Users_Likes;
+DROP TABLE IF EXISTS Users_Follows;
 DROP TABLE IF EXISTS Users;
 DROP TABLE IF EXISTS Posts;
 DROP TABLE IF EXISTS Comments;
@@ -13,7 +14,8 @@ CREATE TABLE Users
 (
     username VARCHAR(255),
     email VARCHAR(255),
-    country VARCHAR(255),
+    join_date DATE,
+    bio VARCHAR(255),
     PRIMARY KEY (username)
 );
 
@@ -21,7 +23,6 @@ CREATE TABLE Posts
 (
     post_id INTEGER,
     title VARCHAR(255),
-    author VARCHAR(255),
     content VARCHAR(255),
     post_date DATETIME,
     PRIMARY KEY (post_id)
@@ -87,6 +88,15 @@ CREATE TABLE Users_Likes
     FOREIGN KEY (post_id) REFERENCES Posts(post_id)
 );
 
+CREATE TABLE Users_Follows
+(
+    username VARCHAR(255),
+    following VARCHAR(255),
+    PRIMARY KEY (username, following),
+    FOREIGN KEY (username) REFERENCES Users(username),
+    FOREIGN KEY (following) REFERENCES Users(username)
+);
+
 
 INSERT INTO Users
     (username, email, country)
@@ -102,17 +112,17 @@ VALUES
     ('qwe', 'qwe@example.com', 'US');
 
 INSERT INTO Posts
-    (post_id, title, author, content, post_date)
+    (post_id, title, content, post_date)
 VALUES
-    (1, 'Post 1', 'jdoe', 'This is the first post', '2018-01-01 00:00:00'),
-    (2, 'Post 2', 'xyz', 'This is the second post', '2018-01-02 00:00:00'),
-    (3, 'Post 3', 'qwe', 'This is the third post', '2018-01-09 00:00:00'),
-    (4, 'Post 4', 'abc', 'This is the fourth post', '2018-01-03 00:00:00'),
-    (5, 'Post 5', 'pqr', 'This is the fifth post', '2018-01-04 00:00:00'),
-    (6, 'Post 6', 'mno', 'This is the sixth post', '2018-01-05 00:00:00'),
-    (7, 'Post 7', 'stu', 'This is the seventh post', '2018-01-06 00:00:00'),
-    (8, 'Post 8', 'wxy', 'This is the eighth post', '2018-01-07 00:00:00'),
-    (9, 'Post 9', 'zxc', 'This is the ninth post', '2018-01-08 00:00:00');
+    (1, 'Post 1', 'This is the first post', '2018-01-01 00:00:00'),
+    (2, 'Post 2', 'This is the second post', '2018-01-02 00:00:00'),
+    (3, 'Post 3', 'This is the third post', '2018-01-09 00:00:00'),
+    (4, 'Post 4', 'This is the fourth post', '2018-01-03 00:00:00'),
+    (5, 'Post 5', 'This is the fifth post', '2018-01-04 00:00:00'),
+    (6, 'Post 6', 'This is the sixth post', '2018-01-05 00:00:00'),
+    (7, 'Post 7', 'This is the seventh post', '2018-01-06 00:00:00'),
+    (8, 'Post 8', 'This is the eighth post', '2018-01-07 00:00:00'),
+    (9, 'Post 9', 'This is the ninth post', '2018-01-08 00:00:00');
 
 INSERT INTO Comments
     (comment_id, post_id, content, comment_date)
