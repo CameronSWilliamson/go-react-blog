@@ -1,20 +1,22 @@
 package database
 
 import (
-	"log"
+	"database/sql"
+	"fmt"
 
-	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/mysql" //Required for MySQL dialect
+	_ "github.com/go-sql-driver/mysql"
 )
 
-var Connector *gorm.DB
+var Connector *sql.DB
 
-func Connect(connString string) error {
+func Connect() error {
+	dbDriver := "mysql"
+	dbUser := "root"
+	dbPass := "root"
+	dbName := "cwilliamson3_DB"
+
 	var err error
-	Connector, err = gorm.Open("mysql", connString)
-	if err != nil {
-		return err
-	}
-	log.Println("Connection was successful")
-	return nil
+	Connector, err = sql.Open(dbDriver, dbUser+":"+dbPass+"@(db)/"+dbName)
+	fmt.Println("Connected to " + dbName)
+	return err
 }
