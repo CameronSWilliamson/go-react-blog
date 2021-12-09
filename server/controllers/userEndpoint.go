@@ -19,12 +19,6 @@ func FetchUsers(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	strArr, err := models.ParseArray(allUsers)
-	if err != nil {
-		log.Fatalf(err.Error())
-		return
-	}
-	fmt.Println(strArr)
 	encoder := json.NewEncoder(w)
 	encoder.SetIndent("", "\t")
 	encoder.SetEscapeHTML(false)
@@ -45,4 +39,23 @@ func FetchSpecificUser(w http.ResponseWriter, r *http.Request) {
 	encoder.SetIndent("", "\t")
 	encoder.SetEscapeHTML(false)
 	encoder.Encode(user)
+}
+
+func CreateUser(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	var user *models.User
+
+	decoder := json.NewDecoder(r.Body)
+	err := decoder.Decode(&user)
+	if err != nil {
+		log.Fatalf(err.Error())
+		return
+	}
+	fmt.Println(user)
+	err = models.CreateUser(user)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		fmt.Println(err)
+		return
+	}
 }
