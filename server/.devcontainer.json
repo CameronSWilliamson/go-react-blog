@@ -28,7 +28,7 @@
         "previewLimit": 50,
         "server": "localhost",
         "port": 3306,
-        "database": "sys",
+        "database": "cwilliamson3_DB",
         "username": "root",
         "password": "root"
       }
