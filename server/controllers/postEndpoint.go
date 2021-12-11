@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
-	"log"
+	"fmt"
 	"net/http"
 
 	"github.com/cameronswilliamson/go-react-blog/models"
@@ -14,7 +14,7 @@ func FetchPostsFromUser(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	posts, err := models.FetchPostsFromUser(mux.Vars(r)["user"])
 	if err != nil {
-		log.Fatalf(err.Error())
+		fmt.Println(err.Error())
 		return
 	}
 

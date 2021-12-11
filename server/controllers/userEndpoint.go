@@ -30,7 +30,7 @@ func FetchSpecificUser(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	user, err := models.FetchUser(mux.Vars(r)["user"])
 	if err != nil {
-		log.Fatalf(err.Error())
+		fmt.Println(err.Error())
 		return
 	}
 
@@ -48,7 +48,7 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.Body)
 	err := decoder.Decode(&user)
 	if err != nil {
-		log.Fatalf(err.Error())
+		fmt.Println(err.Error())
 		return
 	}
 	fmt.Println(user)

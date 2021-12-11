@@ -3,7 +3,6 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 
 	"github.com/cameronswilliamson/go-react-blog/models"
@@ -15,7 +14,7 @@ func APIEndpoint(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	err := json.NewEncoder(w).Encode("{\"resMessage\": \"This is the default endpoint but there's no information\"}")
 	if err != nil {
-		log.Fatalf(err.Error())
+		fmt.Printf(err.Error())
 	}
 }
 
