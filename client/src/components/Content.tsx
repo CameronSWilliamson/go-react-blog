@@ -7,11 +7,13 @@ interface Props {
 
 const Content = (props: Props) => {
     return (
-        <Container>
-            <Col></Col>
-            <Col>{props.children}</Col>
-            <Col></Col>
-        </Container>
+        <div>
+            <Container style={{ display: "flex" }}>
+                <Col></Col>
+                <Col md="auto">{props.children}</Col>
+                <Col></Col>
+            </Container>
+        </div>
     );
 };
 
