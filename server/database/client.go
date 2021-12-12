@@ -11,12 +11,13 @@ var Connector *sql.DB
 
 func Connect() error {
 	dbDriver := "mysql"
-	dbUser := "root"
-	dbPass := "root"
-	dbName := "cwilliamson3_DB"
+	// dbUser := "root"
+	// dbPass := "root"
+	// dbName := "cwilliamson3_DB"
 
 	var err error
-	Connector, err = sql.Open(dbDriver, dbUser+":"+dbPass+"@(db)/"+dbName)
-	fmt.Println("Connected to " + dbName)
+	config := readConfig()
+	Connector, err = sql.Open(dbDriver, config.User+":"+config.Password+"@("+config.ServerName+")/"+config.DB)
+	fmt.Println("Connected to " + config.DB)
 	return err
 }
