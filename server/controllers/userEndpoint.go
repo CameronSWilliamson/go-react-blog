@@ -40,22 +40,3 @@ func FetchSpecificUser(w http.ResponseWriter, r *http.Request) {
 	encoder.SetEscapeHTML(false)
 	encoder.Encode(user)
 }
-
-func CreateUser(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	var user *models.User
-
-	decoder := json.NewDecoder(r.Body)
-	err := decoder.Decode(&user)
-	if err != nil {
-		fmt.Println(err.Error())
-		return
-	}
-	fmt.Println(user)
-	err = models.CreateUser(user)
-	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
-		fmt.Println(err)
-		return
-	}
-}
