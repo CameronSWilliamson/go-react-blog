@@ -10,7 +10,7 @@ type User struct {
 }
 
 func FetchAllUsers() ([]User, error) {
-	rows, err := database.Connector.Query("SELECT username, joinDate, bio FROM Users")
+	rows, err := database.Connector.Query("SELECT username, join_date, bio FROM Users")
 	if err != nil {
 		return nil, err
 	}
@@ -51,4 +51,15 @@ func FetchUser(username string) (*User, error) {
 func CreateUser(u *User) error {
 	_, err := database.Connector.Query("INSERT INTO Users (username, email, join_date, bio) VALUES (?, ?, NOW(), ?)", u.Username, u.Email, u.Bio)
 	return err
+}
+
+func CheckUser(username string) (bool, error) {
+	rows, err := database.Connector.Query("SELECT username FROM Users WHERE username = ?", username)
+	if err != nil {
+		return false, err
+	}
+	for rows.Next() {
+		return true, nil
+	}
+	return false, nil
 }
