@@ -1,4 +1,4 @@
-# CPSC 321 Final Project 
+# CPSC 321 Final Project
 
 ## Installation Guide
 
