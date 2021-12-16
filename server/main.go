@@ -26,6 +26,7 @@ func initializeHandlers(router *mux.Router) {
 	router.HandleFunc("/users/{user}", controllers.FetchSpecificUser).Methods("GET")
 	router.HandleFunc("/users/", controllers.FetchUsers).Methods("GET")
 	router.HandleFunc("/posts/{post_id}", controllers.FetchPost).Methods("GET")
+	router.HandleFunc("/posts/{post_id}/comments", controllers.FetchCommentsFromPost).Methods("GET")
 	router.HandleFunc("/users/{user}/posts/{limit}", controllers.FetchPostsFromUser).Methods("GET")
 	router.HandleFunc("/login", controllers.Login).Methods("GET")
 	router.HandleFunc("/login", controllers.NewUser).Methods("POST")

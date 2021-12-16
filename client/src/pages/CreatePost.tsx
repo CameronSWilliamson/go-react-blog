@@ -18,7 +18,7 @@ const CreatePost = (props: Props) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("/api/categories", {
+        fetch("/api/categories/", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -40,7 +40,7 @@ const CreatePost = (props: Props) => {
     };
 
     const submit = () => {
-        fetch("/api/createpost", {
+        fetch("/api/createpost/" + props.username, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

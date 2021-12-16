@@ -15,3 +15,10 @@ export interface User {
     joindate: string;
     username: string;
 }
+
+export interface Comment {
+    commentid: number;
+    postid: number;
+    username: string;
+    content: string;
+}
