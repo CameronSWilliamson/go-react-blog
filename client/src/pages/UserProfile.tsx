@@ -3,7 +3,6 @@ import { Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import Content from "../components/Content";
 import PostCard from "../components/PostCard";
-import UserPostList from "../components/UserPostList";
 import { logOut } from "../Utils/Auth";
 import { Post } from "../Utils/Types/Models";
 import { UsernameProp } from "../Utils/Types/Props";
@@ -25,7 +24,7 @@ const UserProfile = (props: UsernameProp) => {
                 setPosts(response);
             });
         });
-    }, []);
+    }, [username]);
 
     const loggingOut = () => {
         logOut();

@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Content from "../components/Content";
 import { Post } from "../Utils/Types/Models";
-import CreatePost from "./CreatePost";
 
 const PostPage = () => {
     const postID: number = parseInt(useParams()!.postID!);
@@ -25,7 +24,7 @@ const PostPage = () => {
                 setPost(JSON.parse(res));
             });
         });
-    }, []);
+    }, [postID]);
 
     return (
         <Content>

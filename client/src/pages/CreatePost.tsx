@@ -9,10 +9,6 @@ interface Props {
     loggedIn: boolean;
 }
 
-interface CategoryProps {
-    categories: Array<Category>;
-}
-
 const CreatePost = (props: Props) => {
     const [categories, setCategories] = useState<Array<Category>>([]);
     const [formData, setFormData] = useState({
