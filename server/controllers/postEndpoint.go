@@ -55,6 +55,7 @@ func FetchPost(w http.ResponseWriter, r *http.Request) {
 func CreatePost(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
+	username := mux.Vars(r)["username"]
 	post := models.Post{}
 	err := json.NewDecoder(r.Body).Decode(&post)
 	if err != nil {
@@ -62,7 +63,8 @@ func CreatePost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	fmt.Println(post)
-	err = models.CreatePost(&post)
+	fmt.Println(username)
+	err = models.CreatePost(&post, username)
 	if err != nil {
 		fmt.Println(err)
 		w.WriteHeader(http.StatusInternalServerError)

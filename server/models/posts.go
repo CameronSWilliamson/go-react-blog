@@ -59,25 +59,27 @@ func FetchPost(postId int) (*Post, error) {
 	return post, nil
 }
 
-func CreatePost(post *Post) error {
+func CreatePost(post *Post, username string) error {
 	_, err := database.Connector.Exec("INSERT INTO Posts (title, content, post_date) VALUES (?, ?, NOW());", post.Title, post.Content)
 	if err != nil {
 		return err
 	}
 	var rows *sql.Rows
-	rows, err = database.Connector.Query("SELECT post_id FROM Posts WHERE title = ? AND content = ? AND post_date = ?;", post.Title, post.Content, post.PostDate)
+	rows, err = database.Connector.Query("SELECT post_id FROM Posts WHERE title = ? AND content = ?;", post.Title, post.Content)
 	if err != nil {
 		return err
 	}
 	var postId int
 	for rows.Next() {
 		err = rows.Scan(&postId)
+		// fmt.Printf("%d\n", postId)
 		if err != nil {
 			return err
 		}
 	}
-	fmt.Println(post.Username)
-	_, err = database.Connector.Exec("INSERT INTO Users_Posts (username, post_id) VALUES (?, ?);", post.Username, postId)
+	fmt.Println(username)
+	fmt.Println(postId)
+	_, err = database.Connector.Exec("INSERT INTO Users_Posts (username, post_id) VALUES (?, ?);", &username, postId)
 	if err != nil {
 		return err
 	}
