@@ -31,6 +31,9 @@ func initializeHandlers(router *mux.Router) {
 	router.HandleFunc("/login", controllers.NewUser).Methods("POST")
 	router.HandleFunc("/categories", controllers.FetchCategories).Methods("GET")
 	router.HandleFunc("/createpost", controllers.CreatePost).Methods("POST")
+	router.HandleFunc("/olap/followers-who-liked/{post}", controllers.FetchFollowersWhoLiked).Methods("GET")
+	router.HandleFunc("/olap/category-counts", controllers.FetchPostsFromCategory).Methods("GET")
+	router.HandleFunc("/olap/new-active-users", controllers.FetchNewActiveUsers).Methods("GET")
 }
 
 // Initializes the database connection
