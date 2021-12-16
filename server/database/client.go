@@ -9,6 +9,7 @@ import (
 
 var Connector *sql.DB
 
+// Connects to the database using the credentials in the config file
 func Connect() error {
 	dbDriver := "mysql"
 	// dbUser := "root"

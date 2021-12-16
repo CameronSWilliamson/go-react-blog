@@ -23,3 +23,15 @@ func FetchPostsFromUser(w http.ResponseWriter, r *http.Request) {
 	encoder.SetEscapeHTML(false)
 	encoder.Encode(posts)
 }
+
+func CreatePost(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	post := models.Post{}
+	err := json.NewDecoder(r.Body).Decode(&post)
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+	fmt.Println(post)
+}

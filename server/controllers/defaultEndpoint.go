@@ -9,6 +9,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// Returns a test response when /api is requested
 func APIEndpoint(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -18,6 +19,7 @@ func APIEndpoint(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// Returns a sample response /api/test is requested
 func DefaultEndpoint(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -25,6 +27,7 @@ func DefaultEndpoint(w http.ResponseWriter, r *http.Request) {
 	// fmt.Fprintf(w, "api is up and running")
 }
 
+// Tests to see if a user can be read
 func UserTest(w http.ResponseWriter, r *http.Request) {
 	username := mux.Vars(r)["user"]
 	fmt.Println(username)

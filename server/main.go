@@ -9,6 +9,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// Main function for the program
 func main() {
 	log.Println("Starting the HTTP server on port 8080")
 	router := mux.NewRouter().StrictSlash(true)
@@ -18,6 +19,7 @@ func main() {
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
 
+// Initializes all of the routes for the API
 func initializeHandlers(router *mux.Router) {
 	router.HandleFunc("/", controllers.APIEndpoint).Methods("GET")
 	router.HandleFunc("/test", controllers.DefaultEndpoint).Methods("GET")
@@ -26,12 +28,12 @@ func initializeHandlers(router *mux.Router) {
 	router.HandleFunc("/users/{user}/posts", controllers.FetchPostsFromUser).Methods("GET")
 	router.HandleFunc("/login", controllers.Login).Methods("GET")
 	router.HandleFunc("/login", controllers.NewUser).Methods("POST")
+	router.HandleFunc("/categories", controllers.FetchCategories).Methods("GET")
+	router.HandleFunc("/createpost", controllers.CreatePost).Methods("POST")
 }
 
+// Initializes the database connection
 func initDB() {
-	// config := database.Config{ServerName: "db", User: "root", Password: "root", DB: "sys"}
-	// cnxstr := database.GetConnectionString(config)
-	// err := database.Connect(cnxstr)
 	err := database.Connect()
 	if err != nil {
 		log.Fatalf(err.Error())
