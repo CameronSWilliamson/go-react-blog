@@ -8,3 +8,10 @@ export interface Post {
     username: string;
     postid: number;
 }
+
+export interface User {
+    bio: string;
+    email: string;
+    joindate: string;
+    username: string;
+}
