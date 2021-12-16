@@ -10,6 +10,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// Fetches a list of all users
 func FetchUsers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -25,6 +26,7 @@ func FetchUsers(w http.ResponseWriter, r *http.Request) {
 	encoder.Encode(allUsers)
 }
 
+// Fetches the details for a specific user
 func FetchSpecificUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)

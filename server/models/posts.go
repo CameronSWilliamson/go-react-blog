@@ -15,6 +15,7 @@ type Post struct {
 	PostDate string `json:"post-date"`
 }
 
+// Fetches all of the posts from a given user
 func FetchPostsFromUser(username string, limit int) ([]Post, error) {
 	rows, err := database.Connector.Query("SELECT post_id, title, username as author, content, post_date FROM Posts JOIN Users_Posts USING (post_id) JOIN Users USING (username) WHERE username = ? limit ?;", username, limit)
 	if err != nil {
@@ -38,6 +39,7 @@ func FetchPostsFromUser(username string, limit int) ([]Post, error) {
 	return posts, nil
 }
 
+// Fetches a post given a postID
 func FetchPost(postId int) (*Post, error) {
 	rows, err := database.Connector.Query("SELECT post_id, title, username, content, post_date FROM Posts JOIN Users_Posts USING (post_id) JOIN Users USING (username) WHERE post_id = ?;", postId)
 	if err != nil {
@@ -59,6 +61,7 @@ func FetchPost(postId int) (*Post, error) {
 	return post, nil
 }
 
+// Inserts the provided Post to the database with username as the author.
 func CreatePost(post *Post, username string) error {
 	_, err := database.Connector.Exec("INSERT INTO Posts (title, content, post_date) VALUES (?, ?, NOW());", post.Title, post.Content)
 	if err != nil {

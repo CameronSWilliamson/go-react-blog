@@ -21,6 +21,7 @@ type userPosts struct {
 	Likes    int    `json:"likes"`
 }
 
+// Fetchs the number of people following a user who has liked the specified post
 func FetchFollowersWhoLiked(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	post := vars["post"]
@@ -44,6 +45,7 @@ func FetchFollowersWhoLiked(w http.ResponseWriter, r *http.Request) {
 	encoder.Encode(count)
 }
 
+// Fetches the number of posts in each category and the number of likes for that category
 func FetchPostsFromCategory(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -71,6 +73,7 @@ func FetchPostsFromCategory(w http.ResponseWriter, r *http.Request) {
 	encoder.Encode(postCategories)
 }
 
+// Fetches the number of active "new" users
 func FetchNewActiveUsers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)

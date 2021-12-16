@@ -9,6 +9,7 @@ type User struct {
 	Bio      string `json:"bio"`
 }
 
+// Fetches all users from the database
 func FetchAllUsers() ([]User, error) {
 	rows, err := database.Connector.Query("SELECT username, join_date, bio FROM Users")
 	if err != nil {
@@ -29,6 +30,7 @@ func FetchAllUsers() ([]User, error) {
 	return users, nil
 }
 
+// Fetches a specific user's information from the database
 func FetchUser(username string) (*User, error) {
 	rows, err := database.Connector.Query("SELECT join_date, bio FROM Users WHERE username = ?", username)
 	if err != nil {
@@ -48,11 +50,13 @@ func FetchUser(username string) (*User, error) {
 	return user, nil
 }
 
+// Create a new user within the database
 func CreateUser(u *User) error {
 	_, err := database.Connector.Query("INSERT INTO Users (username, email, join_date, bio) VALUES (?, ?, NOW(), ?)", u.Username, u.Email, u.Bio)
 	return err
 }
 
+// Check if a user exists within the database
 func CheckUser(username string) (bool, error) {
 	rows, err := database.Connector.Query("SELECT username FROM Users WHERE username = ?", username)
 	if err != nil {

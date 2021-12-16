@@ -10,6 +10,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
+// Fetches all posts from a specific user
 func FetchPostsFromUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -31,6 +32,7 @@ func FetchPostsFromUser(w http.ResponseWriter, r *http.Request) {
 	encoder.Encode(posts)
 }
 
+// Fetches a single post
 func FetchPost(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
@@ -52,6 +54,7 @@ func FetchPost(w http.ResponseWriter, r *http.Request) {
 	encoder.Encode(post)
 }
 
+// Creates a post
 func CreatePost(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
