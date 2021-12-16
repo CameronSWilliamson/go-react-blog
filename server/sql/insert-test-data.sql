@@ -11,7 +11,7 @@ INSERT INTO Posts (title, content, post_date) VALUES
     ('John Doe Joins the platform', 'This is my very first post on this platform I am so excited to see how it does in the long term', now()),
     ('Jane Doe Eats Pasta', 'I tried pasta for the first time today. It was one of the most amazing foods I had ever had. 10/10 would try again', now()),
     ('King renounces King account on This blog', 'Someone has created the username "King" in order to appear as though they are the king. The king of what though? Definitely not England.', now()),
-    ('Queen Joins the platform', 'The Queen is so excited to see how this platform works', now());
+    ('Queen Joins the platform', 'The Queen is so excited to see how this platform works', now()),
     ('Jimmy checking in', 'Hello? Is anyone inside of this box? The cake is a lie by the way', now());
 
 INSERT INTO Comments(post_id, content, comment_date) VALUES
@@ -19,10 +19,10 @@ INSERT INTO Comments(post_id, content, comment_date) VALUES
     (1, 'John! Dont listen to those others we are happy to have you here', now()),
     (1, 'John! I am so excited to see how this platform works too!', now()),
     (2, 'Jane, have you seriously never had pasta before? I dont believe it', now()),
-    (2, "I completely agree that is proposterous"),
-    (2, "No I am serious this was my first time"),
-    (3, "Uhh King why did you post this yourself? You're going to expose both of us"),
-    (4, "This is probably a fake like the king was");
+    (2, "I completely agree that is proposterous", now()),
+    (2, "No I am serious this was my first time", now()),
+    (3, "Uhh King why did you post this yourself? You're going to expose both of us", now()),
+    (4, "This is probably a fake like the king was", now());
 
 INSERT INTO Categories (category_name) VALUES
     ('Food'),
