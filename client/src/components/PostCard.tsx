@@ -3,6 +3,7 @@ import { Button, Card } from "react-bootstrap";
 
 interface Props {
     title: string;
+    author: string;
     content?: string;
     postID: number;
 }
@@ -10,13 +11,15 @@ interface Props {
 const PostCard = (props: Props) => {
     return (
         <Card style={{ width: "18rem" }}>
-            <Card.Img variant="top" src="https://via.placeholder.com/286x180" />
             <Card.Body>
                 <Card.Title>{props.title}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">
+                    {props.author}
+                </Card.Subtitle>
                 <Card.Text>{props.content}</Card.Text>
-                <Button variant="primary" href={`/posts/${props.postID}`}>
-                    Go somewhere
-                </Button>
+                <Card.Link href={"../posts/" + props.postID}>
+                    Full Post
+                </Card.Link>
             </Card.Body>
         </Card>
     );

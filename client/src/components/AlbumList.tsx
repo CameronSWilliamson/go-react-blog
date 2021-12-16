@@ -17,7 +17,7 @@ const AlbumList = () => {
             },
         }).then((response) => {
             response.text().then((res) => {
-                console.log("Getting response");
+                console.log(res);
                 let response: Data = JSON.parse(res);
                 setID(response.ID);
                 setStatus(response.Status);

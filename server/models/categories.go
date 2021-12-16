@@ -11,7 +11,7 @@ type Category struct {
 }
 
 func FetchAllCategories() ([]Category, error) {
-	rows, err := database.Connector.Query("SELECT * FROM Categories")
+	rows, err := database.Connector.Query("SELECT * FROM Categories ORDER BY category_name ASC;")
 	if err != nil {
 		return nil, err
 	}

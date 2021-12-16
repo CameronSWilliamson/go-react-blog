@@ -8,6 +8,7 @@ import (
 	"github.com/cameronswilliamson/go-react-blog/models"
 )
 
+// Handles a /login get request to authenticate
 func Login(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	userName := r.Header.Get("username")
@@ -22,6 +23,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(userName)
 }
 
+// Handles a /login post request to create a new user
 func NewUser(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	var user *models.User

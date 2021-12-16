@@ -16,9 +16,7 @@ const UserPostList = (props: Props) => {
         });
     });
 
-    return (
-        <PostCard title="first post" content="content for post" postID={1000} />
-    );
+    return <p>Hello world</p>;
 };
 
 export default UserPostList;

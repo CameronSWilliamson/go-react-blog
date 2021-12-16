@@ -21,7 +21,7 @@ CREATE TABLE Users
 
 CREATE TABLE Posts
 (
-    post_id INTEGER,
+    post_id INTEGER AUTO_INCREMENT,
     title VARCHAR(255),
     content VARCHAR(255),
     post_date DATETIME,
