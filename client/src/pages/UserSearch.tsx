@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Content from "../components/Content";
 
 const UserSearch = () => {
+    useEffect(() => {
+        fetch("/api/users", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then((response) => {
+            response.json().then((data) => {
+                console.log(data);
+            });
+        });
+    });
+
     return (
         <Content>
             <ul>
