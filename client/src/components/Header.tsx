@@ -7,7 +7,7 @@ const Header = (props: UsernameProp) => {
         <Navbar bg="dark" expand="lg">
             <Container>
                 <Navbar.Brand href="/" className="text-white">
-                    React-Bootstrap
+                    CPSC 321 Final Project
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse
