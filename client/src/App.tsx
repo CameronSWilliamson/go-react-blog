@@ -10,6 +10,7 @@ import PostPage from "./pages/PostPage";
 import UserSearch from "./pages/UserSearch";
 import LoginPage from "./pages/LoginPage";
 import { checkLogin } from "./Utils/Auth";
+import CreatePost from "./pages/CreatePost";
 
 function App() {
     const [username, setUsername] = React.useState("");
@@ -47,7 +48,15 @@ function App() {
                     />
                     <Route path="/apitesting/" element={<AlbumList />} />
                     <Route path="/posts/:postID" element={<PostPage />} />
-                    <Route path="/newPost" element={<PostPage />} />
+                    <Route
+                        path="/newPost"
+                        element={
+                            <CreatePost
+                                username={username}
+                                loggedIn={loggedIn}
+                            />
+                        }
+                    />
                     <Route
                         path="/login"
                         element={
